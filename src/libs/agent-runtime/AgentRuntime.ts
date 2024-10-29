@@ -3,6 +3,7 @@ import { ClientOptions } from 'openai';
 import type { TracePayload } from '@/const/trace';
 
 import { LobeRuntimeAI } from './BaseAI';
+import { LobeAi21AI } from './ai21';
 import { LobeAi360AI } from './ai360';
 import { LobeAnthropicAI } from './anthropic';
 import { LobeAzureOpenAI } from './azureOpenai';
@@ -10,8 +11,11 @@ import { LobeBaichuanAI } from './baichuan';
 import { LobeBedrockAI, LobeBedrockAIParams } from './bedrock';
 import { LobeDeepSeekAI } from './deepseek';
 import { LobeFireworksAI } from './fireworksai';
+import { LobeGithubAI } from './github';
 import { LobeGoogleAI } from './google';
 import { LobeGroq } from './groq';
+import { LobeHuggingFaceAI } from './huggingface';
+import { LobeHunyuanAI } from './hunyuan';
 import { LobeMinimaxAI } from './minimax';
 import { LobeMistralAI } from './mistral';
 import { LobeMoonshotAI } from './moonshot';
@@ -21,6 +25,7 @@ import { LobeOpenAI } from './openai';
 import { LobeOpenRouterAI } from './openrouter';
 import { LobePerplexityAI } from './perplexity';
 import { LobeQwenAI } from './qwen';
+import { LobeSenseNovaAI } from './sensenova';
 import { LobeSiliconCloudAI } from './siliconcloud';
 import { LobeSparkAI } from './spark';
 import { LobeStepfunAI } from './stepfun';
@@ -33,6 +38,7 @@ import {
   EmbeddingsPayload,
   ModelProvider,
   TextToImagePayload,
+  TextToSpeechPayload,
 } from './types';
 import { LobeUpstageAI } from './upstage';
 import { LobeZeroOneAI } from './zeroone';
@@ -95,6 +101,9 @@ class AgentRuntime {
   async embeddings(payload: EmbeddingsPayload, options?: EmbeddingsOptions) {
     return this._runtime.embeddings?.(payload, options);
   }
+  async textToSpeech(payload: TextToSpeechPayload, options?: EmbeddingsOptions) {
+    return this._runtime.textToSpeech?.(payload, options);
+  }
 
   /**
    * @description Initialize the runtime with the provider and the options
@@ -116,6 +125,7 @@ class AgentRuntime {
   static async initializeWithProviderOptions(
     provider: string,
     params: Partial<{
+      ai21: Partial<ClientOptions>;
       ai360: Partial<ClientOptions>;
       anthropic: Partial<ClientOptions>;
       azure: { apiVersion?: string; apikey?: string; endpoint?: string };
@@ -123,8 +133,11 @@ class AgentRuntime {
       bedrock: Partial<LobeBedrockAIParams>;
       deepseek: Partial<ClientOptions>;
       fireworksai: Partial<ClientOptions>;
+      github: Partial<ClientOptions>;
       google: { apiKey?: string; baseURL?: string };
       groq: Partial<ClientOptions>;
+      huggingface: { apiKey?: string; baseURL?: string };
+      hunyuan: Partial<ClientOptions>;
       minimax: Partial<ClientOptions>;
       mistral: Partial<ClientOptions>;
       moonshot: Partial<ClientOptions>;
@@ -134,6 +147,7 @@ class AgentRuntime {
       openrouter: Partial<ClientOptions>;
       perplexity: Partial<ClientOptions>;
       qwen: Partial<ClientOptions>;
+      sensenova: Partial<ClientOptions>;
       siliconcloud: Partial<ClientOptions>;
       spark: Partial<ClientOptions>;
       stepfun: Partial<ClientOptions>;
@@ -164,7 +178,7 @@ class AgentRuntime {
       }
 
       case ModelProvider.ZhiPu: {
-        runtimeModel = await LobeZhipuAI.fromAPIKey(params.zhipu);
+        runtimeModel = new LobeZhipuAI(params.zhipu);
         break;
       }
 
@@ -203,6 +217,11 @@ class AgentRuntime {
         break;
       }
 
+      case ModelProvider.HuggingFace: {
+        runtimeModel = new LobeHuggingFaceAI(params.huggingface);
+        break;
+      }
+
       case ModelProvider.Minimax: {
         runtimeModel = new LobeMinimaxAI(params.minimax);
         break;
@@ -215,6 +234,11 @@ class AgentRuntime {
 
       case ModelProvider.Groq: {
         runtimeModel = new LobeGroq(params.groq);
+        break;
+      }
+
+      case ModelProvider.Github: {
+        runtimeModel = new LobeGithubAI(params.github);
         break;
       }
 
@@ -280,6 +304,21 @@ class AgentRuntime {
 
       case ModelProvider.Spark: {
         runtimeModel = new LobeSparkAI(params.spark);
+        break;
+      }
+
+      case ModelProvider.Ai21: {
+        runtimeModel = new LobeAi21AI(params.ai21);
+        break;
+      }
+
+      case ModelProvider.Hunyuan: {
+        runtimeModel = new LobeHunyuanAI(params.hunyuan);
+        break;
+      }
+
+      case ModelProvider.SenseNova: {
+        runtimeModel = await LobeSenseNovaAI.fromAPIKey(params.sensenova);
         break;
       }
     }
