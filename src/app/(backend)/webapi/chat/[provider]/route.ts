@@ -1,5 +1,5 @@
 // import { getPreferredRegion } from '@/app/api/config';
-import { createErrorResponse } from '@/app/api/errorResponse';
+import { createErrorResponse } from '@/utils/errorResponse';
 import { checkAuth } from '@/app/(backend)/middleware/auth';
 import {
   AGENT_RUNTIME_ERROR_SET,
