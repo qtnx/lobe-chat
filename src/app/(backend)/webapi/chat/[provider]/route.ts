@@ -1,7 +1,11 @@
 // import { getPreferredRegion } from '@/app/api/config';
 import { createErrorResponse } from '@/app/api/errorResponse';
 import { checkAuth } from '@/app/(backend)/middleware/auth';
-import { AgentRuntime, ChatCompletionErrorPayload } from '@/libs/agent-runtime';
+import {
+  AGENT_RUNTIME_ERROR_SET,
+  AgentRuntime,
+  ChatCompletionErrorPayload,
+} from '@/libs/agent-runtime';
 import { createTraceOptions, initAgentRuntimeWithUserPayload } from '@/server/modules/AgentRuntime';
 import { ChatErrorType } from '@/types/fetch';
 import { ChatStreamPayload } from '@/types/openai/chat';
@@ -12,7 +16,7 @@ export const runtime = 'edge';
 
 export const preferredRegion = [ 'sin1', 'kix1' ]//getPreferredRegion();
 export const POST = checkAuth(async (req: Request, { params, jwtPayload, createRuntime }) => {
-  const { provider } = params;
+  const { provider } = await params;
 
   try {
     // ============  1. init chat model   ============ //
@@ -47,8 +51,10 @@ export const POST = checkAuth(async (req: Request, { params, jwtPayload, createR
     } = e as ChatCompletionErrorPayload;
 
     const error = errorContent || e;
+
+    const logMethod = AGENT_RUNTIME_ERROR_SET.has(errorType as string) ? 'warn' : 'error';
     // track the error at server side
-    console.error(`Route: [${provider}] ${errorType}:`, error);
+    console[logMethod](`Route: [${provider}] ${errorType}:`, error);
 
     return createErrorResponse(errorType, { error, ...res, provider });
   }
