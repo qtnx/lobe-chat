@@ -3,6 +3,8 @@ import { LobeOpenAICompatibleFactory } from '../utils/openaiCompatibleFactory';
 
 // TODO: 临时写法，后续要重构成 model card 展示配置
 export const o1Models = new Set([
+  'o1',
+  'o1-mini',
   'o1-preview',
   'o1-preview-2024-09-12',
   'o1-mini',
@@ -14,7 +16,7 @@ export const pruneO1Payload = (payload: ChatStreamPayload) => ({
   frequency_penalty: 0,
   messages: payload.messages.map((message: OpenAIChatMessage) => ({
     ...message,
-    role: message.role === 'system' ? 'user' : message.role,
+    role: message.role === 'system' ? ( (payload.model == 'o1' || payload.model == 'o1-moni') ? 'developer' : 'user') : message.role,
   })),
   presence_penalty: 0,
   temperature: 1,
