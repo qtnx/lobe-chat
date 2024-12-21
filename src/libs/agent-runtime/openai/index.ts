@@ -18,9 +18,9 @@ export const pruneO1Payload = (payload: ChatStreamPayload) => ({
     ...message,
     role: message.role === 'system' ? ( (payload.model === 'o1' || payload.model === 'o1-mini') ? 'developer' : 'user') : message.role,
   })),
+  stream: payload.model === "o1" ? false : payload.stream,
   presence_penalty: 0,
   temperature: 1,
-  stream: payload.model === "o1" ? false : payload.stream,
   top_p: 1
 });
 
