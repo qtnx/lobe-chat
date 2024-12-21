@@ -20,8 +20,8 @@ export const pruneO1Payload = (payload: ChatStreamPayload) => ({
   })),
   presence_penalty: 0,
   temperature: 1,
-  top_p: 1,
-  stream: payload.model === "o1" ? false : payload.stream
+  stream: payload.model === "o1" ? false : payload.stream,
+  top_p: 1
 });
 
 export const LobeOpenAI = LobeOpenAICompatibleFactory({
