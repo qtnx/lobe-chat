@@ -1,6 +1,270 @@
 [
   {
     "children": {
+      "features": ["Update Remark."]
+    },
+    "date": "2025-01-08",
+    "version": "1.45.0"
+  },
+  {
+    "children": {
+      "fixes": ["Fix provider enabled issue."]
+    },
+    "date": "2025-01-08",
+    "version": "1.44.3"
+  },
+  {
+    "children": {
+      "fixes": ["Add provider id validate."]
+    },
+    "date": "2025-01-08",
+    "version": "1.44.2"
+  },
+  {
+    "children": {
+      "fixes": ["Fix model select not auto update and sort issue."]
+    },
+    "date": "2025-01-08",
+    "version": "1.44.1"
+  },
+  {
+    "children": {
+      "features": ["Brand new AI provider."]
+    },
+    "date": "2025-01-07",
+    "version": "1.44.0"
+  },
+  {
+    "children": {
+      "fixes": ["Fix portal suspense error when first open."]
+    },
+    "date": "2025-01-07",
+    "version": "1.43.6"
+  },
+  {
+    "children": {
+      "improvements": ["Fix style warning in antd 5.23.0 and some error logs."]
+    },
+    "date": "2025-01-07",
+    "version": "1.43.5"
+  },
+  {
+    "children": {
+      "fixes": ["Fix format short number."]
+    },
+    "date": "2025-01-06",
+    "version": "1.43.4"
+  },
+  {
+    "children": {
+      "improvements": ["Upgrade @clerk/nextjs to v6."]
+    },
+    "date": "2025-01-04",
+    "version": "1.43.3"
+  },
+  {
+    "children": {
+      "fixes": ["Fix heatmap and manifest."]
+    },
+    "date": "2025-01-04",
+    "version": "1.43.2"
+  },
+  {
+    "children": {
+      "fixes": ["Fix stats data query issue."]
+    },
+    "date": "2025-01-03",
+    "version": "1.43.1"
+  },
+  {
+    "children": {
+      "features": ["Add User Stats and Refactor Profile."],
+      "fixes": ["Fix chat page error."]
+    },
+    "date": "2025-01-03",
+    "version": "1.43.0"
+  },
+  {
+    "children": {
+      "improvements": ["Fix zero-sized element in topic list."]
+    },
+    "date": "2025-01-03",
+    "version": "1.42.6"
+  },
+  {
+    "children": {
+      "fixes": ["Fix topic mobile view ui error."]
+    },
+    "date": "2025-01-02",
+    "version": "1.42.5"
+  },
+  {
+    "children": {
+      "improvements": ["Refactor provider info and improve settings side bar loading."]
+    },
+    "date": "2025-01-02",
+    "version": "1.42.4"
+  },
+  {
+    "children": {},
+    "date": "2025-01-01",
+    "version": "1.42.3"
+  },
+  {
+    "children": {
+      "improvements": ["Add o1 model in openai and openrouter models."]
+    },
+    "date": "2024-12-31",
+    "version": "1.42.2"
+  },
+  {
+    "children": {
+      "fixes": ["Fix custom max_token not saved from customModelCards."]
+    },
+    "date": "2024-12-29",
+    "version": "1.42.1"
+  },
+  {
+    "children": {
+      "features": ["Add custom stream handle support for LobeOpenAICompatibleFactory."]
+    },
+    "date": "2024-12-29",
+    "version": "1.42.0"
+  },
+  {
+    "children": {
+      "features": ["Support white list for discover assistant."]
+    },
+    "date": "2024-12-28",
+    "version": "1.41.0"
+  },
+  {
+    "children": {
+      "improvements": ["Update deepseek V3 model."]
+    },
+    "date": "2024-12-28",
+    "version": "1.40.4"
+  },
+  {
+    "children": {
+      "fixes": ["Fix fetch error in changelog modal."]
+    },
+    "date": "2024-12-26",
+    "version": "1.40.3"
+  },
+  {
+    "children": {
+      "improvements": ["Refactor tokens to contextWindowTokens."]
+    },
+    "date": "2024-12-26",
+    "version": "1.40.2"
+  },
+  {
+    "children": {
+      "fixes": ["Fix o1Models list."]
+    },
+    "date": "2024-12-26",
+    "version": "1.40.1"
+  },
+  {
+    "children": {
+      "improvements": ["Refactor services code style."],
+      "features": ["Add changelog modal."]
+    },
+    "date": "2024-12-26",
+    "version": "1.40.0"
+  },
+  {
+    "children": {
+      "improvements": ["Improve loading brand."]
+    },
+    "date": "2024-12-25",
+    "version": "1.39.3"
+  },
+  {
+    "children": {
+      "improvements": ["Refactor sensenova provider with LobeOpenAICompatibleFactory."]
+    },
+    "date": "2024-12-25",
+    "version": "1.39.2"
+  },
+  {
+    "children": {
+      "fixes": ["Fix image input on pglite."]
+    },
+    "date": "2024-12-24",
+    "version": "1.39.1"
+  },
+  {
+    "children": {
+      "features": ["Upgrade to next15 and react19."]
+    },
+    "date": "2024-12-23",
+    "version": "1.39.0"
+  },
+  {
+    "children": {
+      "features": ["Support thread in client pglite."]
+    },
+    "date": "2024-12-23",
+    "version": "1.38.0"
+  },
+  {
+    "children": {
+      "improvements": ["Move pglite to client service."]
+    },
+    "date": "2024-12-22",
+    "version": "1.37.2"
+  },
+  {
+    "children": {
+      "improvements": ["Refactor the client service to deprecated."]
+    },
+    "date": "2024-12-22",
+    "version": "1.37.1"
+  },
+  {
+    "children": {
+      "features": ["Support to use pglite as client db."]
+    },
+    "date": "2024-12-22",
+    "version": "1.37.0"
+  },
+  {
+    "children": {
+      "improvements": ["Refactor client mode upload to match server mode."]
+    },
+    "date": "2024-12-21",
+    "version": "1.36.46"
+  },
+  {
+    "children": {
+      "improvements": ["Add o1 model in GitHub models."]
+    },
+    "date": "2024-12-21",
+    "version": "1.36.45"
+  },
+  {
+    "children": {
+      "improvements": ["Add Gemini flash thinking model."]
+    },
+    "date": "2024-12-21",
+    "version": "1.36.44"
+  },
+  {
+    "children": {},
+    "date": "2024-12-21",
+    "version": "1.36.43"
+  },
+  {
+    "children": {
+      "fixes": ["Fix HUGGINGFACE endpoint url."]
+    },
+    "date": "2024-12-21",
+    "version": "1.36.42"
+  },
+  {
+    "children": {
       "improvements": ["Upgrade react scan."]
     },
     "date": "2024-12-21",
